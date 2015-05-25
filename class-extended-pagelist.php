@@ -20,14 +20,34 @@ class extended_pagelist {
 
     /**
      *
+     * @since 0.1
      */
     function __construct() {
-        add_shortcode( 'pagelist', array( 'extended_pagelist', 'pagelist' ) );
+        add_shortcode( 'pagelist',      array( 'extended_pagelist', 'pagelist' ) );
+        add_action( 'plugins_loaded',   array( 'extended_pagelist', 'load_translations' ) );
         define( 'EXTENDED_PAGELIST_ABSPATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
     }
 
+
     /**
+     * load the plugin textdomain
      *
+     * load the plugin textdomain with translations
+     *
+     * @since 0.1
+     */
+    static public function load_translations() {
+        load_plugin_textdomain( 'extended_pagelist', false, apply_filters ( 'extended_pagelist_translationpath', dirname( plugin_basename( __FILE__ )) . '/languages/' ) );
+    }
+
+
+    /**
+     * Build Arguments for build_content function
+     *
+     * Build arguments for the pagelist an retrieves the content
+     *
+     * @since 0.1
+     * @uses extended_pagelist::build_content
      * @param array $atts
      * @return string
      */
@@ -68,6 +88,9 @@ class extended_pagelist {
                                     'order'     => $order,
                                     'post__not_in' => array( $post_id )
                                 );
+                                break;
+            default          :  $content = __( 'Unsupported type in shortcode', 'extended_pagelist' );
+                                return $content;
 
 
         }
@@ -136,6 +159,12 @@ class extended_pagelist {
     }
 
     /**
+     *
+     * get template
+     *
+     * load a template file
+     *
+     * @since 0.1
      * @param $type
      * @param $template
      * @return string

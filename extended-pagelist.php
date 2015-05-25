@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Extended Pagelist
-Plugin URI: http://www.staude.net/wordpress/plugins/ExtendedPagelist
+Plugin URI:  http://staude.net/wordpress/extended-pagelist/
 Description: List subpages and siblings from pages via shortcode
 Author: Frank Staude
 Version: 0.1
 Text Domain: extended-pagelist
 Domain Path: languages
 Author URI: http://www.staude.net/
-Compatibility: WordPress 4.1
+Compatibility: WordPress 4.2
 */
 
 /*  Copyright 2014-2015  Frank Staude  (email : frank@staude.net)
